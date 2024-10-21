@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Sign-up Page - Hemanth</title>
+    <title>Leader Page - Hemanth</title>
     <style>
         * {
             margin: 0;
@@ -12,236 +12,297 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #B2F0E8, #FFDDC1);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #F8F9FA, #E0E7FF);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Make the body take full screen height */
+            width: 100vw; /* Full screen width */
+            color: #333;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         .container {
-            width: 600px; /* Increased width for laptop view */
+            width: 80%; /* Width of the container */
+            max-width: 1200px; /* Maximum width of the container */
             background: white;
-            padding: 40px; /* More padding for spacious layout */
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Center-align content */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            overflow: auto; /* Allows scrolling inside the container if needed */
+            height: 100%; /* Full height for container */
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h1 {
-            margin-bottom: 20px;
-            font-size: 32px; /* Larger font for laptop view */
-            color: #6A67CE;
-        }
-
-        .logo {
-            width: 150px; /* Adjust logo size */
-            margin-bottom: 20px;
-        }
-
-        .form-box {
-            width: 100%;
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .button-box {
-            width: 100%;
-            margin-bottom: 20px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            overflow: hidden;
-        }
-
-        .toggle-btn {
-            width: 50%;
-            padding: 15px; /* Adjusted padding for buttons */
-            cursor: pointer;
-            background: transparent;
-            border: 0;
-            outline: none;
-            position: relative;
-            color: #6A67CE;
-            font-weight: bold;
             text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #2C3E50; /* Dark Blue */
         }
 
-        #btn {
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            background: #FFDDC1;
-            transition: 0.5s;
-            border-radius: 30px;
-        }
-
-        .input-group {
-            display: none;
-            flex-direction: column;
-            margin-top: 20px;
+        h2 {
+            font-size: 24px;
+            color: #2980B9; /* Blue */
+            margin-bottom: 10px;
         }
 
         .input-field {
             width: 100%;
-            padding: 14px; /* Slightly larger padding for input fields */
-            margin-bottom: 12px;
-            border-radius: 30px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            border: 1px solid #BDC3C7; /* Light Grey */
             outline: none;
-            background: #f9f9f9;
+            background: #ECF0F1; /* Light Background */
+            transition: border-color 0.3s ease;
         }
 
         .input-field:focus {
-            border-color: #6A67CE;
-        }
-
-        .check-box {
-            margin-right: 10px;
+            border-color: #2980B9; /* Blue */
         }
 
         .submit-btn {
             width: 100%;
-            padding: 15px; /* Larger padding for button */
-            background: #6A67CE;
+            padding: 12px;
+            background: #2980B9; /* Blue */
             border: none;
             color: white;
             cursor: pointer;
             margin-top: 10px;
-            border-radius: 30px;
+            border-radius: 20px;
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         .submit-btn:hover {
-            background: #5A54B3;
+            background: #1F618D; /* Darker Blue */
+            transform: scale(1.05);
         }
 
-        #login {
-            display: flex;
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #F4F6F7; /* Light Grey */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        #signup {
-            display: none;
-        }
-
-        .forgot-password {
-            text-align: right;
+        .attendance-list {
             margin-top: 10px;
         }
 
-        .forgot-password a {
-            color: #6A67CE;
-            text-decoration: none;
+        .attendance-item {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background: #ffffff;
+            transition: background 0.2s ease;
         }
 
-        .forgot-password a:hover {
-            text-decoration: underline;
+        .attendance-item:hover {
+            background: #D5DBDB; /* Light Hover Grey */
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .container {
-                width: 80%; /* Adjust width for smaller laptop screens */
-            }
-
-            h1 {
-                font-size: 28px; /* Slightly smaller font on smaller screens */
-            }
-
-            .submit-btn {
-                padding: 12px;
-            }
+        .search-box {
+            margin-bottom: 10px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                width: 90%; /* Full width on smaller screens */
-            }
+        .message {
+            text-align: center;
+            color: #27AE60; /* Green */
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
 
-            .logo {
-                width: 120px; /* Adjust logo size for smaller screens */
-            }
+        .error-message {
+            text-align: center;
+            color: #E74C3C; /* Red */
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7F8C8D; /* Grey */
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 10px auto;
+            max-width: 150px; /* Adjust based on your logo size */
+        }
+
+        .company-name {
+            text-align: center;
+            font-size: 32px; /* Increased font size */
+            color: #577bef; /* Blue */
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Add your logo here -->
-        <img src="file:///D:/Delete/Sri Sairam logo.jpg" alt="Sri Sairam Projects Ltd Logo" class="logo">
-
-        <h1>Sri Sairam Projects Ltd</h1>
-
-        <div class="form-box">
-            <div class="button-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">Login</button>
-                <button type="button" class="toggle-btn" onclick="signup()">Sign Up</button>
-            </div>
-
-            <!-- Login Form -->
-            <form id="login" class="input-group" onsubmit="return handleLogin(event)">
-                <input type="text" id="username" class="input-field" placeholder="Username" required>
-                <input type="password" id="password" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box"><span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log In</button>
-                <div class="forgot-password">
-                    <a href="#">Forgot Password?</a>
-                </div>
-            </form>
-
-            <!-- Sign-Up Form -->
-            <form id="signup" class="input-group">
-                <input type="text" class="input-field" placeholder="Username" required>
-                <input type="email" class="input-field" placeholder="Email" required>
-                <input type="password" class="input-field" placeholder="Password" required>
-                <input type="password" class="input-field" placeholder="Confirm Password" required>
-                <input type="checkbox" class="check-box"><span>I agree to the terms and conditions</span>
-                <button type="submit" class="submit-btn">Sign Up</button>
-            </form>
+        <!-- Company Logo and Name -->
+        <img src="D:\Delete\Sri Sairam logo.jpg" alt="Company Logo" class="logo"> <!-- Change this to your logo path -->
+        <div class="company-name">
+            Sri Sairam Projects Ltd Construction Company
         </div>
+        <h1>Leader Dashboard</h1>
+
+        <!-- Current Date and Time -->
+        <div class="section">
+            <h2>Current Date & Time</h2>
+            <p id="current-date-time"></p>
+        </div>
+
+        <!-- Attendance Section -->
+        <div class="section">
+            <h2>Take Attendance</h2>
+            <input type="text" id="search-box" class="input-field search-box" placeholder="Search Employee..." onkeyup="filterEmployees()">
+
+            <!-- Time Selection -->
+            <select id="attendance-time" class="input-field">
+                <option value="">Select Time</option>
+                <option value="morning">Morning (8:00 AM)</option>
+                <option value="evening">Evening (5:00 PM)</option>
+            </select>
+
+            <div class="attendance-list" id="attendance-list">
+                <div class="attendance-item">
+                    <input type="checkbox" id="employee1" class="employee-checkbox">
+                    <label for="employee1">Siva</label>
+                </div>
+                <div class="attendance-item">
+                    <input type="checkbox" id="employee2" class="employee-checkbox">
+                    <label for="employee2">Hemanth</label>
+                </div>
+                <div class="attendance-item">
+                    <input type="checkbox" id="employee3" class="employee-checkbox">
+                    <label for="employee3">Ravi</label>
+                </div>
+                <div class="attendance-item">
+                    <input type="checkbox" id="employee4" class="employee-checkbox">
+                    <label for="employee4">Prabhakar</label>
+                </div>
+                <div class="attendance-item">
+                    <input type="checkbox" id="employee5" class="employee-checkbox">
+                    <label for="employee5">Karthik</label>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitAttendance()">Submit Attendance</button>
+            <div class="message" id="attendance-message">Attendance submitted successfully!</div>
+            <div class="error-message" id="attendance-error">Attendance has already been taken for this time period!</div>
+        </div>
+
+        <!-- Photo Upload Section -->
+        <div class="section">
+            <h2>Upload Photos</h2>
+            <input type="file" id="photo-upload" class="input-field" accept="image/*" required>
+            <button type="button" class="submit-btn" onclick="uploadPhoto()">Upload Photo</button>
+            <div class="message" id="photo-message">Photo uploaded successfully!</div>
+            <div class="error-message" id="photo-error">Failed to upload photo. Please try again.</div>
+        </div>
+
+        <!-- Apply Bills Section -->
+        <div class="section">
+            <h2>Apply Bills</h2>
+            <input type="text" id="bill-details" class="input-field" placeholder="Enter Bill Details" required>
+            <input type="file" id="bill-photo" class="input-field" accept="image/*" required>
+            <button type="button" class="submit-btn" onclick="submitBill()">Submit Bill</button>
+            <div class="message" id="bill-message">Bill and photo submitted successfully!</div>
+            <div class="error-message" id="bill-error">Please enter bill details and upload a photo!</div>
+        </div>
+
+        <footer>
+            &copy; 2024 Sri Sairam Projects Ltd Construction Company
+        </footer>
     </div>
 
     <script>
-        var loginForm = document.getElementById("login");
-        var signupForm = document.getElementById("signup");
-        var toggleBtn = document.getElementById("btn");
-
-        // Hardcoded credentials for Leader and Admin
-        const credentials = {
-            leader: { username: 'leader', password: '5' },
-            admin: { username: 'admin', password: 'admin123' }
+        var attendanceTaken = {
+            morning: false,
+            evening: false
         };
 
-        function signup() {
-            loginForm.style.display = "none";
-            signupForm.style.display = "flex";
-            toggleBtn.style.left = "50%";
+        // Display Current Date and Time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            document.getElementById('current-date-time').innerText = now.toLocaleString('en-US', options);
         }
 
-        function login() {
-            signupForm.style.display = "none";
-            loginForm.style.display = "flex";
-            toggleBtn.style.left = "0";
+        // Update the date and time every second
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // Call it once at the start
+
+        // Filter employees based on search input
+        function filterEmployees() {
+            const searchInput = document.getElementById('search-box').value.toLowerCase();
+            const attendanceList = document.getElementById('attendance-list');
+            const employeeCheckboxes = attendanceList.getElementsByClassName('attendance-item');
+
+            for (let i = 0; i < employeeCheckboxes.length; i++) {
+                const label = employeeCheckboxes[i].querySelector('label').textContent.toLowerCase(); // Corrected line
+                if (label.includes(searchInput)) {
+                    employeeCheckboxes[i].style.display = 'block';
+                } else {
+                    employeeCheckboxes[i].style.display = 'none';
+                }
+            }
         }
 
-        function handleLogin(event) {
-            event.preventDefault(); // Prevent form submission
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+        // Submit Attendance
+        function submitAttendance() {
+            const time = document.getElementById('attendance-time').value;
+            const checkboxes = document.getElementsByClassName('employee-checkbox');
 
-            if (username === credentials.leader.username && password === credentials.leader.password) {
-                // Redirect to Leader Page
-                window.location.href = "company leader.html"; // Replace with your actual Leader page URL
-            } else if (username === credentials.admin.username && password === credentials.admin.password) {
-                // Redirect to Admin Page
-                window.location.href = "company Home page.html"; // Replace with your actual Admin page URL
+            if (time === "") {
+                alert("Please select a time period.");
+                return;
+            }
+
+            if (attendanceTaken[time]) {
+                document.getElementById('attendance-error').style.display = 'block';
+                return;
+            }
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    console.log(`Employee ${checkboxes[i].nextElementSibling.textContent} marked as present.`);
+                }
+            }
+
+            attendanceTaken[time] = true;
+            document.getElementById('attendance-message').style.display = 'block';
+        }
+
+        // Upload Photo
+        function uploadPhoto() {
+            const photoInput = document.getElementById('photo-upload');
+            if (photoInput.files.length > 0) {
+                document.getElementById('photo-message').style.display = 'block';
             } else {
-                alert("Invalid credentials. Please try again.");
+                document.getElementById('photo-error').style.display = 'block';
+            }
+        }
+
+        // Submit Bill
+        function submitBill() {
+            const billDetails = document.getElementById('bill-details').value;
+            const billPhoto = document.getElementById('bill-photo').files.length;
+            if (billDetails && billPhoto) {
+                document.getElementById('bill-message').style.display = 'block';
+            } else {
+                document.getElementById('bill-error').style.display = 'block';
             }
         }
     </script>
