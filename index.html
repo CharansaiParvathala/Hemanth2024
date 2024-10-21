@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign-up Page - Hemanth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #B2F0E8, #FFDDC1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 600px; /* Increased width for laptop view */
+            background: white;
+            padding: 40px; /* More padding for spacious layout */
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center-align content */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px; /* Larger font for laptop view */
+            color: #6A67CE;
+        }
+
+        .logo {
+            width: 150px; /* Adjust logo size */
+            margin-bottom: 20px;
+        }
+
+        .form-box {
+            width: 100%;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .button-box {
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .toggle-btn {
+            width: 50%;
+            padding: 15px; /* Adjusted padding for buttons */
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            outline: none;
+            position: relative;
+            color: #6A67CE;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #btn {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: #FFDDC1;
+            transition: 0.5s;
+            border-radius: 30px;
+        }
+
+        .input-group {
+            display: none;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px; /* Slightly larger padding for input fields */
+            margin-bottom: 12px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            outline: none;
+            background: #f9f9f9;
+        }
+
+        .input-field:focus {
+            border-color: #6A67CE;
+        }
+
+        .check-box {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px; /* Larger padding for button */
+            background: #6A67CE;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #5A54B3;
+        }
+
+        #login {
+            display: flex;
+        }
+
+        #signup {
+            display: none;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #6A67CE;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                width: 80%; /* Adjust width for smaller laptop screens */
+            }
+
+            h1 {
+                font-size: 28px; /* Slightly smaller font on smaller screens */
+            }
+
+            .submit-btn {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%; /* Full width on smaller screens */
+            }
+
+            .logo {
+                width: 120px; /* Adjust logo size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Add your logo here -->
+        <img src="file:///D:/Delete/Sri Sairam logo.jpg" alt="Sri Sairam Projects Ltd Logo" class="logo">
+
+        <h1>Sri Sairam Projects Ltd</h1>
+
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="signup()">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login" class="input-group" onsubmit="return handleLogin(event)">
+                <input type="text" id="username" class="input-field" placeholder="Username" required>
+                <input type="password" id="password" class="input-field" placeholder="Password" required>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn">Log In</button>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+
+            <!-- Sign-Up Form -->
+            <form id="signup" class="input-group">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <input type="email" class="input-field" placeholder="Email" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <input type="password" class="input-field" placeholder="Confirm Password" required>
+                <input type="checkbox" class="check-box"><span>I agree to the terms and conditions</span>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var loginForm = document.getElementById("login");
+        var signupForm = document.getElementById("signup");
+        var toggleBtn = document.getElementById("btn");
+
+        // Hardcoded credentials for Leader and Admin
+        const credentials = {
+            leader: { username: 'leader', password: '5' },
+            admin: { username: 'admin', password: 'admin123' }
+        };
+
+        function signup() {
+            loginForm.style.display = "none";
+            signupForm.style.display = "flex";
+            toggleBtn.style.left = "50%";
+        }
+
+        function login() {
+            signupForm.style.display = "none";
+            loginForm.style.display = "flex";
+            toggleBtn.style.left = "0";
+        }
+
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === credentials.leader.username && password === credentials.leader.password) {
+                // Redirect to Leader Page
+                window.location.href = "company leader.html"; // Replace with your actual Leader page URL
+            } else if (username === credentials.admin.username && password === credentials.admin.password) {
+                // Redirect to Admin Page
+                window.location.href = "company Home page.html"; // Replace with your actual Admin page URL
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
