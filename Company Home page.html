@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home Page - Hemanth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e2f3f5, #c9e4f5); /* Soft gradient background */
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2C3E50;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 24px;
+            color: #d8542f; /* Dark Blue for company name */
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .company-logo {
+            width: 100px; /* Adjust logo size as needed */
+            height: 50;
+        }
+
+        .card {
+            background: #ffffff; /* White background for cards */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s; /* Transition effects */
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #2980B9; /* Darker blue for headings */
+        }
+
+        .card a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #3498db; /* Brighter button color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s; /* Button transition */
+        }
+
+        .card a:hover {
+            background: #2980B9; /* Darker blue on hover */
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #7F8C8D;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Adjust grid for better spacing */
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section with Logo and Company Name -->
+        <div class="header">
+            <img src="D:\Delete\Sri Sairam logo.jpg" alt="Company Logo" class="company-logo"> <!-- Logo Image -->
+            <div class="company-name">
+                Sri Sairam Projects Ltd Construction Company
+            </div>
+        </div>
+        
+        <!-- Admin Home Page Heading -->
+        <h1>Admin Home Page</h1>
+
+        <!-- Grid of Cards for Admin Sections -->
+        <div class="grid">
+            <div class="card">
+                <h2>Attendance Records</h2>
+                <a href="admi.html">View Attendance</a>
+            </div>
+            <div class="card">
+                <h2>Bill Management</h2>
+                <a href="bill-management.html">Manage Bills</a>
+            </div>
+            <div class="card">
+                <h2>Photo Uploads</h2>
+                <a href="photo-upload.html">View Photos</a>
+            </div>
+            <div class="card">
+                <h2>User Management</h2>
+                <a href="user-management.html">Manage Users</a>
+            </div>
+            <div class="card">
+                <h2>Reports</h2>
+                <a href="reports.html">View Reports</a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            &copy; 2024 Sri Sairam Projects Ltd construction company.
+        </footer>
+    </div>
+</body>
+</html>
